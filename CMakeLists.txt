@@ -11,5 +11,19 @@ set(CMAKE_C_STANDARD_REQUIRED TRUE)
 file(GLOB SOURCE_FILES "src/*.c")
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 
+# Charstring header directory
+set(CHARSTRING_INCLUDE "${CMAKE_CURRENT_SOURCE_DIR}/include")
+
 # Define public headers
-target_include_directories(${PROJECT_NAME} PUBLIC "include")
+target_include_directories(${PROJECT_NAME} PUBLIC ${CHARSTRING_INCLUDE})
+
+# Add unit testing
+if(NOT EXCLUDE_UNIT_TEST)
+  # Enable Ctest
+  enable_testing()
+  include(Dart)
+
+  # Add required sub directories
+  add_subdirectory("external")
+  add_subdirectory("test")
+endif()

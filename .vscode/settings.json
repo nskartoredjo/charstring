@@ -1,6 +1,8 @@
 {
   "files.associations": {
     "string": "cpp",
-    "charstring.h": "c"
+    "charstring.h": "c",
+    "unity.h": "c",
+    "string_view": "c"
   }
 }
